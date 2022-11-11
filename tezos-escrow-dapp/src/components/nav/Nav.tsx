@@ -1,12 +1,12 @@
 
-const Nav: React.FC<{}> = (props) => {
+const Nav: React.FC<{collapsed: boolean, setCollapsed: (collapsed: boolean) => void }> = (props) => {
     return <>
     <div className="col-12 col-lg-3" style={{'position': 'relative'}}>
         <nav className="sticky-kit nav-deep nav-deep-light js-ajaxified js-stickified">
 
         <div className="card">
             <div className="card-body p-0 p-md-4">
-                <button className="clearfix btn btn-toggle btn-sm w-100 text-align-left shadow-md border rounded d-block d-lg-none js-togglified" data-bs-target="#nav_responsive" data-toggle-container-className="d-none d-sm-block bg-white shadow-md border animate-fadein rounded p-3">
+                <button className="clearfix btn btn-toggle btn-sm w-100 text-align-left shadow-md border rounded d-block d-lg-none js-togglified">
                     <span className="group-icon px-2 py-2 float-start">
                         <i className="fi fi-bars-2"></i>
                         <i className="fi fi-close"></i>

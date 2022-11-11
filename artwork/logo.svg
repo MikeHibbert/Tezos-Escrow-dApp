@@ -24,32 +24,111 @@
      inkscape:document-units="px"
      showgrid="false"
      inkscape:zoom="1.4042969"
-     inkscape:cx="244.96245"
+     inkscape:cx="231.43254"
      inkscape:cy="265.2573"
      inkscape:window-width="1920"
      inkscape:window-height="1016"
      inkscape:window-x="0"
      inkscape:window-y="1107"
      inkscape:window-maximized="1"
-     inkscape:current-layer="layer1" />
+     inkscape:current-layer="layer1"
+     showguides="true"
+     inkscape:guide-bbox="true" />
   <defs
      id="defs2" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Shield">
+    <g
+       id="g3100"
+       transform="matrix(1.2747788,0,0,1.2747788,-72.743302,-47.605855)">
+      <g
+         id="g2751"
+         transform="matrix(0.81317242,0,0,0.81317242,52.712845,46.906766)"
+         style="stroke-width:10.0666;stroke-miterlimit:4;stroke-dasharray:none">
+        <path
+           id="path2223"
+           style="fill:#d5e5ff;stroke:#0b1728;stroke-width:10.0666;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           d="M 250.66016,16.452305 C 208.92444,66.322344 157.33551,93.111959 99.779743,105.92176 125.53403,222.958 171.53552,317.76066 250.66016,376.18202 l 0.41577,-0.75644 V 16.702764 Z" />
+        <path
+           id="path2675"
+           style="fill:#162d50;stroke:#0b1728;stroke-width:10.0666;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           d="M 250.66016,16.452305 C 292.39588,66.322344 343.98481,93.111959 401.54058,105.92176 375.78629,222.958 329.7848,317.76066 250.66016,376.18202 l -0.41577,-0.75644 V 16.702764 Z" />
+      </g>
+      <g
+         id="g2763"
+         transform="matrix(0.36199274,0.15923562,-0.15923562,0.36199274,196.53208,74.726772)">
+        <path
+           id="path267"
+           style="fill:#ffffff;stroke:#162d50;stroke-width:23.3554;stroke-miterlimit:4;stroke-dasharray:none"
+           d="M 133.85098,133.03942 A 106.71604,106.71604 0 0 0 27.134635,239.75576 106.71604,106.71604 0 0 0 133.85098,346.47209 a 106.71604,106.71604 0 0 0 78.82617,-35.0068 h 88.41955 a 106.71604,106.71604 0 0 0 78.82618,35.0068 106.71604,106.71604 0 0 0 106.71634,-106.71633 106.71604,106.71604 0 0 0 -106.71634,-106.71634 106.71604,106.71604 0 0 0 -19.04399,1.92539 H 158.98456 c -1.17343,0 -2.31581,0.11965 -3.42819,0.32463 a 106.71604,106.71604 0 0 0 -21.70539,-2.25002 z" />
+        <g
+           id="g1891"
+           transform="translate(6.9659248,8.3162377)">
+          <circle
+             style="fill:#0044aa;stroke:#162d50;stroke-width:16.3;stroke-miterlimit:4;stroke-dasharray:none"
+             id="path1736"
+             cx="400.02481"
+             cy="-145.94978"
+             r="7.4340663"
+             transform="rotate(47.691214)" />
+          <circle
+             style="fill:#0044aa;stroke:#162d50;stroke-width:16.3;stroke-miterlimit:4;stroke-dasharray:none"
+             id="circle1871"
+             cx="445.42087"
+             cy="-149.98854"
+             r="7.4340663"
+             transform="rotate(47.691214)" />
+          <circle
+             style="fill:#0044aa;stroke:#162d50;stroke-width:16.3;stroke-miterlimit:4;stroke-dasharray:none"
+             id="circle1873"
+             cx="400.02481"
+             cy="-99.726387"
+             r="7.4340663"
+             transform="rotate(47.691214)" />
+          <circle
+             style="fill:#0044aa;stroke:#162d50;stroke-width:16.3;stroke-miterlimit:4;stroke-dasharray:none"
+             id="circle1875"
+             cx="448.379"
+             cy="-101.07262"
+             r="7.4340663"
+             transform="rotate(47.691214)" />
+        </g>
+        <g
+           id="g2067"
+           transform="translate(34.720466,175.12995)"
+           style="fill:#162d50">
+          <rect
+             style="fill:#162d50;stroke:none;stroke-width:16.3;stroke-miterlimit:4;stroke-dasharray:none"
+             id="rect1937"
+             width="24.589359"
+             height="82.453491"
+             x="84.194626"
+             y="20.020601"
+             ry="9.7431335" />
+          <rect
+             style="fill:#162d50;stroke:none;stroke-width:16.3;stroke-miterlimit:4;stroke-dasharray:none"
+             id="rect1983"
+             width="24.589359"
+             height="82.453491"
+             x="48.952667"
+             y="-137.71605"
+             ry="9.7431335"
+             transform="rotate(90)" />
+        </g>
+      </g>
+    </g>
+  </g>
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1">
-    <rect
-       style="fill:#ffffff;fill-opacity:1"
-       id="rect116"
-       width="63.037727"
-       height="89.930115"
-       x="399.87344"
-       y="120.34884" />
     <g
-       id="g36316">
+       id="g3379">
       <text
          xml:space="preserve"
-         style="font-style:normal;font-weight:normal;font-size:122.676px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#5f5fd3;fill-opacity:1;stroke:none;stroke-width:3.06689"
+         style="font-style:normal;font-weight:normal;font-size:122.676px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#5f8dd3;fill-opacity:1;stroke:#5f8dd3;stroke-width:3.06689"
          x="12.252599"
          y="482.78479"
          id="text2330"><tspan
@@ -57,10 +136,10 @@
            id="tspan2328"
            x="12.252599"
            y="482.78479"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:122.676px;font-family:Gidugu;-inkscape-font-specification:'Gidugu, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#5f5fd3;stroke-width:3.06689">Tourna</tspan></text>
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:122.676px;font-family:Gidugu;-inkscape-font-specification:'Gidugu, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#5f8dd3;stroke:#5f8dd3;stroke-width:3.06689">Tourna</tspan></text>
       <text
          xml:space="preserve"
-         style="font-style:normal;font-weight:normal;font-size:122.676px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#212178;fill-opacity:1;stroke:none;stroke-width:3.06689"
+         style="font-style:normal;font-weight:normal;font-size:122.676px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#002255;fill-opacity:1;stroke:#002255;stroke-width:3.06689"
          x="290.3801"
          y="482.69635"
          id="text32170"><tspan
@@ -68,7 +147,12 @@
            id="tspan32168"
            x="290.3801"
            y="482.69635"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:122.676px;font-family:Gidugu;-inkscape-font-specification:'Gidugu, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#212178;stroke-width:3.06689">Bond</tspan></text>
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:122.676px;font-family:Gidugu;-inkscape-font-specification:'Gidugu, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#002255;stroke:#002255;stroke-width:3.06689">Bond</tspan></text>
     </g>
   </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="Controller"
+     sodipodi:insensitive="true" />
 </svg>
