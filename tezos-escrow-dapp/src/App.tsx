@@ -5,7 +5,8 @@ import { useLocation } from 'react-router-dom';
 import Layout from './components/layout/Layout';
 import { Routes, Route } from 'react-router-dom';
 import TournamentsList from './containers/tournaments/Tournaments';
-import Tournament from './models/tournament';
+import { Contestant, Tournament } from './models/tournament';
+import TournamentDetail from './components/tournament/detail';
 
 
 function App() {
@@ -30,15 +31,23 @@ function App() {
       alert("OnConnectWallet: Not implemented!")  
   }
 
+  const contestants = [
+    new Contestant("Timmy McBriffle", "0x100000000000000000000000000"),
+    new Contestant("Jammy Piffle", "0x200000000000000000000000000"),
+    new Contestant("Whosda Molly", "0x300000000000000000000000000"),
+    new Contestant("Gimma Chalkstick", "0x400000000000000000000000000")
+  ];
+
   const tournaments = [
-    new Tournament("Tournament 1", ['0x100000000000000000000000', '0x200000000000000000000000', '0x200000000000000000000000']),
-    new Tournament("Tournament 2", ['0x100000000000000000000000', '0x200000000000000000000000', '0x200000000000000000000000']),
-    new Tournament("Tournament 3", ['0x100000000000000000000000', '0x200000000000000000000000', '0x200000000000000000000000']),
-    new Tournament("Tournament 4", ['0x100000000000000000000000', '0x200000000000000000000000', '0x200000000000000000000000']),
+    new Tournament("Tournament 1", contestants),
+    new Tournament("Tournament 2", contestants),
+    new Tournament("Tournament 3", contestants),
+    new Tournament("Tournament 4", contestants)
   ]
 
   const routes =  <Routes>
-    <Route path='/' element={<TournamentsList tournaments={tournaments} setPageTitle={setPageTitle}/>} />
+    <Route path='/' element={<TournamentsList tournaments={tournaments} setPageTitle={setPageTitle} />} />
+    <Route path='/tournament' element={<TournamentDetail tournaments={tournaments} setPageTitle={setPageTitle} />} />
   </Routes>;
 
   return (

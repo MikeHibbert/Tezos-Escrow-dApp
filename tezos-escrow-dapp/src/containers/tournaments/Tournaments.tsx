@@ -1,6 +1,6 @@
 import { PropsWithChildren, useEffect } from 'react';
 import TournamentListItem from '../../components/tournament/tournament';
-import Tournament from '../../models/tournament';
+import {Tournament} from '../../models/tournament';
 
 interface TournamentsProps {
     tournaments: Tournament[],
@@ -10,7 +10,7 @@ interface TournamentsProps {
 const TournamentsList: React.FC<PropsWithChildren<TournamentsProps>> = (props) => {
     useEffect(() => {
         props.setPageTitle('My Tournaments');
-    });
+    }, []);
     
     
     return <>
