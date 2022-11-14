@@ -1,4 +1,5 @@
 import { PropsWithChildren } from 'react';
+import BackLink from '../nav/BackLink';
 import {SideNav, TopNav} from "../nav/Nav";
 
 type LayoutProps = {
@@ -6,7 +7,11 @@ type LayoutProps = {
     pageTitle: string,
     setCollapsed: (collapsed: boolean) => any,
     OnConnectWallet: () => any,
-    location: {pathname: string}
+    location: {pathname: string},
+    useBackLink: boolean,
+    setUseBackLink: (useBackLink: boolean) => any,
+    backLinkTitle: string,
+    setBackLinkTitle: (backLinkTitle: string) => any,
 }
 
 
@@ -19,6 +24,12 @@ const Layout: React.FC<PropsWithChildren<LayoutProps>> = (props) => {
         </header>
         <div className="container py-5">
             <h1 className="h2 fw-bold">{props.pageTitle}</h1>
+            <BackLink 
+                useBackLink={props.useBackLink} 
+                backLinkTitle={props.backLinkTitle} 
+                setBackLinkTitle={props.setBackLinkTitle}
+                setUseBackLink={props.setUseBackLink}
+                />
         </div>
         <div className="container pb-6">
             <div className="row g-4">
@@ -26,6 +37,7 @@ const Layout: React.FC<PropsWithChildren<LayoutProps>> = (props) => {
                     collapsed={props.collapsed} 
                     setCollapsed={props.setCollapsed} 
                     location={props.location}
+                    setUseBackLink={props.setUseBackLink}
                 />
                 <div className="col-12 col-lg-9">
                     {props.children}

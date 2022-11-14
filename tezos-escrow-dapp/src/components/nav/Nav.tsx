@@ -4,13 +4,15 @@ import NavItem from './NavItem';
 interface SideNavProps {
     collapsed: boolean, 
     setCollapsed: (collapsed: boolean) => void,
-    location: { pathname: string }
+    location: { pathname: string },
+    setUseBackLink: (useBackLink: boolean) => any
 }
 
 
 export const SideNav: React.FC<SideNavProps> = (props) => {
     useEffect(() => {
         props.setCollapsed(true);
+        props.setUseBackLink(false);
     }, [props.location.pathname]);
 
     return <>

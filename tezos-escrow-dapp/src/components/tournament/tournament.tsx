@@ -15,14 +15,13 @@ const TournamentListItem: React.FC<TournamentProps> = (props) => {
 
                 <div className="col">
                 <h5 className="fw-bold">{props.tournament.title}</h5>
-                <p className="mb-0 text-dark small">{props.tournament.start.toDateString()} | Total: $365.00</p>
+                <p className="mb-0 text-dark small">{props.tournament.start.toDateString()} | Prize: {props.tournament.prize} XTZ</p>
                 </div>
                 
                 <div className="col-12 border-top border-light my-2 d-lg-none"></div>
 
                 <div className="col-lg-4 text-lg-end text-dark">
-                    <span className="d-block fw-medium text-info">Pending</span>
-                <span className="d-block small">credit card</span>
+                    <span className="d-block fw-medium text-success">{props.tournament.status}</span>
                 </div>
 
             </div>

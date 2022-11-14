@@ -1,3 +1,5 @@
+import { Guid } from "../helpers/guid";
+
 export class Contestant {
     name: string;
     address: string;
@@ -16,14 +18,16 @@ export class Tournament {
     status: string;
     start: Date;
     end: Date;
+    prize: number;
 
-    constructor(title: string, contestants: Contestant[]) {
+    constructor(title: string, contestants: Contestant[], prize: number) {
         this.title = title;
         this.contestants = contestants;
         this.winner = new Contestant("Not assigned", "no address");
-        this.id = new Date().toISOString();
+        this.id = Guid.newGuid();
         this.status = "Started";
         this.start = new Date();
         this.end = new Date();
+        this.prize = prize;
     }
 }
