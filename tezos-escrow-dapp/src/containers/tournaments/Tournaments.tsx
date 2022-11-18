@@ -16,21 +16,32 @@ const TournamentsList: React.FC<PropsWithChildren<TournamentsProps>> = (props) =
     return <>
             <div className="card mb-3">
                 <div className="card-body">
-                    <div className="dropdown">
-                        <a id="dropdownMenuFilter" href="#" className="text-dark js-stoppropag" data-bs-toggle="dropdown" aria-expanded="false">
-                            <span>All orders</span>
-                            <svg className="mx-1" xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                <polyline points="6 9 12 15 18 9"></polyline>
-                            </svg>
-                        </a>
+                    <div className='row g2'>
+                        <div className='col'>
+                            <div className="dropdown">
+                                
+                                <a id="dropdownMenuFilter" href="#" className="text-dark js-stoppropag" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span>All orders</span>
+                                    <svg className="mx-1" xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg>
+                                </a>
 
-                        <ul className="dropdown-menu shadow-lg rounded-xl" aria-labelledby="dropdownMenuFilter" >
-                        <li><a className="dropdown-item active" href="#">All orders</a></li>
-                        <li><a className="dropdown-item" href="#">Last 3 months</a></li>
-                        <li><a className="dropdown-item" href="#">Last 6 months</a></li>
-                        <li><a className="dropdown-item" href="#">Last 12 months</a></li>
-                        </ul>
-                    </div>            
+                                <ul className="dropdown-menu shadow-lg rounded-xl" aria-labelledby="dropdownMenuFilter" >
+                                    <li><a className="dropdown-item active" href="#">All orders</a></li>
+                                    <li><a className="dropdown-item" href="#">Last 3 months</a></li>
+                                    <li><a className="dropdown-item" href="#">Last 6 months</a></li>
+                                    <li><a className="dropdown-item" href="#">Last 12 months</a></li>
+                                </ul>
+                                
+                            </div>    
+                        </div>
+                        <div className='col text-end'>
+                            <span className='flex-none'>
+                                <a href="/new-tournament" className="js-ajax-modal flex-none text-decoration-none border border-primary rounded px-2 py-1 small js-modalified" data-href="_ajax/modal_address.html" data-ajax-modal-size="modal-lg" data-ajax-modal-centered="true" data-ajax-modal-backdrop="static">+ Tournament</a>
+                            </span>
+                        </div>
+                    </div>        
                 </div>
             </div>
         

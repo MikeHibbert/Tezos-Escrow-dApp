@@ -7,6 +7,7 @@ import { Routes, Route } from 'react-router-dom';
 import TournamentsList from './containers/tournaments/Tournaments';
 import { Contestant, Tournament } from './models/tournament';
 import TournamentDetail from './components/tournament/detail';
+import NewTournament from './components/tournament/new';
 
 
 function App() {
@@ -54,6 +55,13 @@ function App() {
                                           setUseBackLink={setUseBackLink}
                                           setBackLinkTitle={setBackLinkTitle}
                                           />} />
+    <Route path='/new-tournament' element={<NewTournament 
+                                              setPageTitle={setPageTitle}
+                                              useBackLink={true}
+                                              backLinkTitle={"back to My Tournaments"} 
+                                              setUseBackLink={setUseBackLink}
+                                              setBackLinkTitle={setBackLinkTitle}
+                                            />} />
   </Routes>;
 
   return (
