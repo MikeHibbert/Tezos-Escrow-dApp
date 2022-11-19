@@ -11,12 +11,13 @@ interface NewTournamentProps {
 }
 
 const NewTournament: React.FC<NewTournamentProps> = (props) => {
-    const [id, setId] = useState();
+    const [id, setId] = useState("");
     const [type, setType] = useState('');
     const [title, setTitle] = useState('');
-    const [contestants, setContestants] = useState<Contestant[]>();
+    const [contestants, setContestants] = useState<Contestant[]>([]);
     const [status, setStatus] = useState<string>('Not Saved');
     const [start, setStart] = useState<Date>(new Date());
+    const [end, setEnd] = useState<Date>(new Date());
     const [prize, setPrize] = useState<number>(0); 
 
     useEffect(() => {
@@ -33,11 +34,21 @@ const NewTournament: React.FC<NewTournamentProps> = (props) => {
         winner: null,
         status: 'Not saved',
         start: new Date(),
-        end: null,
+        end: new Date(),
         prize: 0
     }
 
-    return <TournamentForm {...blankForm} 
+    return <TournamentForm 
+                id={id}
+                type={type}
+                title={title}
+                contestants={contestants}
+                winner={null}
+                status={status}
+                start={start}
+                end={end}
+                prize={prize}
+                
                 setType={setType}
                 setTitle={setTitle} 
                 setContestants={setContestants} 
@@ -45,7 +56,7 @@ const NewTournament: React.FC<NewTournamentProps> = (props) => {
                 setStart={setStart} 
                 setPrize={setPrize} 
                 setWinner={() => {}}
-                setEnd={() => {}} />;
+                setEnd={setEnd} />;
 }
 
 export default NewTournament;

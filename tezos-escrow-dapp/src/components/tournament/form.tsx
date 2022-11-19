@@ -1,8 +1,10 @@
 import { ChangeEvent, useState } from 'react';
 import {Contestant, SINGLE_PAYOUT, MULTI_PAYOUT} from '../../models/tournament';
 import ContestanstFormElement from './inputs/contestants';
-import { DateRangePicker } from 'react-dates';
-import Moment from 'react-moment';
+import 'react-dates/initialize';
+import 'react-dates/lib/css/_datepicker.css';
+import { DateRangePicker, FocusedInputShape} from 'react-dates';
+import moment from 'moment';
 
 interface TournamentFormProps {
     id: string;
@@ -27,6 +29,7 @@ interface TournamentFormProps {
 
 const TournamentForm: React.FC<TournamentFormProps> = (props) => {
     const [contestants, setContestants] = useState<Contestant[]>([new Contestant("", "")]);
+    const [datepickerFocused, setDatepickerFocused] = useState<FocusedInputShape | null>(null);
 
     const OnChangeType = (event: ChangeEvent<{value: string}>) => {
         props.setType(event.currentTarget.value);
@@ -58,12 +61,22 @@ const TournamentForm: React.FC<TournamentFormProps> = (props) => {
         props.setStatus(event.currentTarget.value);
     }
 
-    const OnChangeStart = (event: React.FormEvent<HTMLInputElement>) => {
-        props.setStart(new Date(event.currentTarget.value));
+    const setStart = (date: moment.Moment | null) => {
+        if(date) props.setStart(date.toDate());
     }
 
-    const OnChangeEnd = (event: React.FormEvent<HTMLInputElement>) => {
-        props.setEnd(new Date(event.currentTarget.value));
+    const setEnd = (date: moment.Moment | null) => {
+        if(date) props.setEnd(date.toDate());
+    }
+
+    interface IHandleDatesChange {
+        startDate: moment.Moment | null,
+        endDate: moment.Moment | null,
+    }
+    
+    const OnChangeDates = ({startDate, endDate}: IHandleDatesChange) => {
+        setStart(startDate);
+        setEnd(endDate);
     }
 
     const OnChangePrize = (event: ChangeEvent<{value: number}>) => {
@@ -87,10 +100,17 @@ const TournamentForm: React.FC<TournamentFormProps> = (props) => {
                         <input placeholder="Prize in XTZ" id="title" name="title" type="number" className="form-control" />
                         <label htmlFor="title">Prize in XTZ</label>
                     </div>
-                    {/* <div className='form-floating mb-4'>
+                    <div className='form-floating mb-4'>
                         <DateRangePicker 
-                            startDate={<Moment>props.start</Moment>}/>
-                    </div> */}
+                            startDate={moment(props.start)}
+                            startDateId="unique_start_date_id"
+                            endDate={moment(props.end)}
+                            endDateId="unique_end_date_id"
+                            onDatesChange={OnChangeDates}
+                            focusedInput={datepickerFocused}
+                            onFocusChange={focusedInput => setDatepickerFocused(focusedInput)}
+                        />
+                    </div>
                     <div className='form-floating mb-4'>
                         <select onChange={OnChangeType} className="form-select form-select-sm" aria-label="Default select example">
                             <option value="">Choose tournament payout</option>
