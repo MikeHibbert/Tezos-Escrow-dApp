@@ -1,10 +1,12 @@
 import { ChangeEvent, useState } from 'react';
-import {Contestant, SINGLE_PAYOUT, MULTI_PAYOUT} from '../../models/tournament';
+import {Contestant, Payout, SINGLE_PAYOUT, MULTI_PAYOUT} from '../../models/tournament';
 import ContestanstFormElement from './inputs/contestants';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
-import { DateRangePicker, FocusedInputShape} from 'react-dates';
+import { DateRangePicker, FocusedInputShape } from 'react-dates';
 import moment from 'moment';
+import { title } from 'process';
+import PayoutsInputElement from './inputs/payouts';
 
 interface TournamentFormProps {
     id: string;
@@ -15,7 +17,8 @@ interface TournamentFormProps {
     status: string;
     start: Date;
     end: Date | null;
-    prize: number;
+    prize: string;
+    payouts: Payout[];
 
     setType: (type: string) => void;
     setTitle: (title: string) => void;
@@ -24,7 +27,8 @@ interface TournamentFormProps {
     setStatus: (status: string) => void;
     setStart: (start: Date) => void;
     setEnd: (end: Date) => void | null;
-    setPrize: (amount: number) => void;
+    setPrize: (amount: string) => void;
+    setPayouts: (payouts: Payout[]) => void;
 }
 
 const TournamentForm: React.FC<TournamentFormProps> = (props) => {
@@ -79,25 +83,44 @@ const TournamentForm: React.FC<TournamentFormProps> = (props) => {
         setEnd(endDate);
     }
 
-    const OnChangePrize = (event: ChangeEvent<{value: number}>) => {
-
+    const OnChangePrize = (event: React.FormEvent<HTMLInputElement>) => {
         props.setPrize(event.currentTarget.value);
+        const prize = Number(event.currentTarget.value);
+        recalculatePayouts(prize);
+    }
+
+    const recalculatePayouts = (prize: number) => {
+        props.payouts.map(p => {
+            p.amount = prize * (p.percentage / 100);
+        })
+    }
+
+    const OnChangePayouts = (payouts: Payout[]) => {
+        props.setPayouts(payouts);
+        recalculatePayouts(Number(props.prize));        
     }
 
 
+    let multi_payout_options = null;
     if(props.type == MULTI_PAYOUT) {
-
+        multi_payout_options = <div className='form-floating mb-3'>
+            <PayoutsInputElement
+                prize={props.prize}
+                payouts={props.payouts}
+                OnChangePayouts={OnChangePayouts}
+            />
+        </div>
     }
     
     return <div className="card mb-3">
                 <div className="card-body">
                     <div><h1 className="h4 mb-1 fw-bold mb-4">Tournament Details</h1></div>
                     <div className="form-floating mb-3">
-                        <input placeholder="Title" id="title" name="title" type="text" className="form-control" />
+                        <input onChange={OnChangeTitle} placeholder="Title" value={props.title} id="title" name="title" type="text" className="form-control" />
                         <label htmlFor="title">Title</label>
                     </div>
                     <div className='form-floating mb-3'>
-                        <input placeholder="Prize in XTZ" id="title" name="title" type="number" className="form-control" />
+                        <input onChange={OnChangePrize} value={props.prize} pattern="^-?[0-9]\d*\.?\d*$" placeholder="Prize in XTZ" id="title" name="title" type="number" className="form-control" />
                         <label htmlFor="title">Prize in XTZ</label>
                     </div>
                     <div className='form-floating mb-4'>
@@ -111,13 +134,16 @@ const TournamentForm: React.FC<TournamentFormProps> = (props) => {
                             onFocusChange={focusedInput => setDatepickerFocused(focusedInput)}
                         />
                     </div>
-                    <div className='form-floating mb-4'>
+                    <div className='form-floating mb-3'>
                         <select onChange={OnChangeType} className="form-select form-select-sm" aria-label="Default select example">
-                            <option value="">Choose tournament payout</option>
+                            <option value="">Choose tournament payout. (Single or Multi)</option>
                             <option value={SINGLE_PAYOUT}>{SINGLE_PAYOUT}</option>
                             <option value={MULTI_PAYOUT}>{MULTI_PAYOUT}</option>
                         </select>
                         <label htmlFor="floatingSelect">Tournament payout</label>
+                    </div>
+                    <div className='form-floating mb-4'>
+                        {multi_payout_options}
                     </div>
                     
                     <div className='form-floating mb-3'>
@@ -126,9 +152,7 @@ const TournamentForm: React.FC<TournamentFormProps> = (props) => {
                             setContestants={setContestants}
                         />
                     </div>
-                    <div className='form-floating mb-3'>
-
-                    </div>
+                    
                     
                 </div>
             </div>;

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import TournamentForm from "./form";
-import {Contestant} from '../../models/tournament';
+import {Contestant, Payout} from '../../models/tournament';
 
 interface NewTournamentProps {
     setPageTitle: (title:string) => void,
@@ -18,7 +18,8 @@ const NewTournament: React.FC<NewTournamentProps> = (props) => {
     const [status, setStatus] = useState<string>('Not Saved');
     const [start, setStart] = useState<Date>(new Date());
     const [end, setEnd] = useState<Date>(new Date());
-    const [prize, setPrize] = useState<number>(0); 
+    const [prize, setPrize] = useState<string>("0"); 
+    const [payouts, setPayouts] = useState<Payout[]>([new Payout(0, 100)]);
 
     useEffect(() => {
         props.setPageTitle("Setup tournament escrow");
@@ -35,7 +36,7 @@ const NewTournament: React.FC<NewTournamentProps> = (props) => {
         status: 'Not saved',
         start: new Date(),
         end: new Date(),
-        prize: 0
+        prize: "0"
     }
 
     return <TournamentForm 
@@ -48,6 +49,7 @@ const NewTournament: React.FC<NewTournamentProps> = (props) => {
                 start={start}
                 end={end}
                 prize={prize}
+                payouts={payouts}
                 
                 setType={setType}
                 setTitle={setTitle} 
@@ -56,7 +58,8 @@ const NewTournament: React.FC<NewTournamentProps> = (props) => {
                 setStart={setStart} 
                 setPrize={setPrize} 
                 setWinner={() => {}}
-                setEnd={setEnd} />;
+                setEnd={setEnd} 
+                setPayouts={setPayouts} />;
 }
 
 export default NewTournament;

@@ -13,6 +13,7 @@ export class Tournament {
     start: Date;
     end: Date;
     prize: number;
+    payouts: Payout[];
 
     constructor(title: string, contestants: Contestant[], prize: number) {
         this.type = SINGLE_PAYOUT; // can also be "MULTI_PAYOUT" for more than one user payout from pot
@@ -24,6 +25,7 @@ export class Tournament {
         this.start = new Date();
         this.end = new Date();
         this.prize = prize;
+        this.payouts = [new Payout(0, 100)];
     }
 }
 
@@ -36,5 +38,17 @@ export class Contestant {
         this.id = Guid.newGuid();
         this.name = name;
         this.address = address;
+    }
+}
+
+export class Payout {
+    id: string;
+    amount: number;
+    percentage: number;
+
+    constructor(amount: number, percentage: number) {
+        this.id = Guid.newGuid();
+        this.amount = amount;
+        this.percentage = percentage;
     }
 }
