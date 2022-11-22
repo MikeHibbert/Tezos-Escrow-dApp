@@ -1,4 +1,5 @@
 import { PropsWithChildren, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import TournamentListItem from '../../components/tournament/tournament';
 import {Tournament} from '../../models/tournament';
 
@@ -38,7 +39,7 @@ const TournamentsList: React.FC<PropsWithChildren<TournamentsProps>> = (props) =
                         </div>
                         <div className='col text-end'>
                             <span className='flex-none'>
-                                <a href="/new-tournament" className="js-ajax-modal flex-none text-decoration-none border border-primary rounded px-2 py-1 small js-modalified" data-href="_ajax/modal_address.html" data-ajax-modal-size="modal-lg" data-ajax-modal-centered="true" data-ajax-modal-backdrop="static">+ Tournament</a>
+                                <Link to="/new-tournament" className="js-ajax-modal flex-none text-decoration-none border border-primary rounded px-2 py-1 small js-modalified" data-href="_ajax/modal_address.html" data-ajax-modal-size="modal-lg" data-ajax-modal-centered="true" data-ajax-modal-backdrop="static">+ Tournament</Link>
                             </span>
                         </div>
                     </div>        

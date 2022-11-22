@@ -81,25 +81,28 @@ function App() {
     setCollapsed(collapsed);
   }
   
-
-  const routes =  <Routes>
-    <Route path='/' element={<TournamentsList tournaments={tournaments} setPageTitle={setPageTitle} />} />
-    <Route path='/tournament' element={<TournamentDetail 
-                                          tournaments={tournaments} 
-                                          setPageTitle={setPageTitle} 
-                                          useBackLink={true}
-                                          backLinkTitle={"back to My Tournaments"} 
-                                          setUseBackLink={setUseBackLink}
-                                          setBackLinkTitle={setBackLinkTitle}
-                                          />} />
-    <Route path='/new-tournament' element={<NewTournament 
-                                              setPageTitle={setPageTitle}
-                                              useBackLink={true}
-                                              backLinkTitle={"back to My Tournaments"} 
-                                              setUseBackLink={setUseBackLink}
-                                              setBackLinkTitle={setBackLinkTitle}
+  let routes =  <Routes></Routes>
+  
+  if(!showConnectWallet) {
+  routes =  <Routes>
+      <Route path='/' element={<TournamentsList tournaments={tournaments} setPageTitle={setPageTitle} />} />
+      <Route path='/tournament' element={<TournamentDetail 
+                                            tournaments={tournaments} 
+                                            setPageTitle={setPageTitle} 
+                                            useBackLink={true}
+                                            backLinkTitle={"back to My Tournaments"} 
+                                            setUseBackLink={setUseBackLink}
+                                            setBackLinkTitle={setBackLinkTitle}
                                             />} />
-  </Routes>;
+      <Route path='/new-tournament' element={<NewTournament 
+                                                setPageTitle={setPageTitle}
+                                                useBackLink={true}
+                                                backLinkTitle={"back to My Tournaments"} 
+                                                setUseBackLink={setUseBackLink}
+                                                setBackLinkTitle={setBackLinkTitle}
+                                              />} />
+    </Routes>;
+  }
 
   return (
     <Layout 
