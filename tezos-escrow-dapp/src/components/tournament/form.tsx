@@ -37,6 +37,10 @@ const TournamentForm: React.FC<TournamentFormProps> = (props) => {
 
     const OnChangeType = (event: ChangeEvent<{value: string}>) => {
         props.setType(event.currentTarget.value);
+        if(event.currentTarget.value === SINGLE_PAYOUT) {
+            const payouts = [new Payout(Number(props.prize), 100)];
+            props.setPayouts(payouts);
+        }
     }
 
     const OnChangeTitle = (event: React.FormEvent<HTMLInputElement>) => {

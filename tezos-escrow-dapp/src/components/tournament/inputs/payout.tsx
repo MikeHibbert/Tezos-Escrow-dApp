@@ -12,8 +12,8 @@ interface PayoutInputProps {
 const PayoutInput: React.FC<PayoutInputProps> = (props) => {
 
     const OnChangePercentage = (event: React.FormEvent<HTMLInputElement>) => {
-            const percentage = parseFloat(event.currentTarget.value);
-            const prize = parseFloat(props.prize);
+            const percentage = Number(event.currentTarget.value);
+            const prize = Number(props.prize);
             const amount = prize * (percentage / 100);
             let newPayout = new Payout(amount, percentage);
             newPayout.id = props.id;
@@ -22,8 +22,8 @@ const PayoutInput: React.FC<PayoutInputProps> = (props) => {
     }
 
     return <div className="input-group">
-        <input type="text" name="amount" disabled={true} placeholder="amount" value={props.amount} className="form-control form-control-clean" />
-        <input type="text" name="address" placeholder="Wallet Address" value={props.percentage} onChange={OnChangePercentage} className="form-control form-control-clean" />
+        <input type="number" name="amount" disabled={true} placeholder="Amount" value={props.amount} className="form-control form-control-clean" />
+        <input type="number" name="percentage" placeholder="Percentage" value={props.percentage} onChange={OnChangePercentage} className="form-control form-control-clean" />
         <button onClick={() => props.OnRemovePayout(props.id)} className="btn btn-default">X</button>
     </div>;
 }

@@ -14,7 +14,8 @@ const PayoutsInputElement: React.FC<PayoutsInputElementProps> = (props) => {
     }
 
     const OnRemovePayout = (id: string) => {
-
+        const newPayouts = props.payouts.filter(p => p.id !== id);
+        props.OnChangePayouts(newPayouts);
     }
 
     const OnPayoutChange = (payout: Payout) => {

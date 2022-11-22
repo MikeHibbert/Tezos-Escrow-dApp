@@ -5,7 +5,9 @@ interface SideNavProps {
     collapsed: boolean, 
     setCollapsed: (collapsed: boolean) => void,
     location: { pathname: string },
-    setUseBackLink: (useBackLink: boolean) => any
+    setUseBackLink: (useBackLink: boolean) => any,
+    showConnectWallet: boolean,
+    OnDisconnectWallet: () => any
 }
 
 
@@ -14,6 +16,19 @@ export const SideNav: React.FC<SideNavProps> = (props) => {
         props.setCollapsed(true);
         props.setUseBackLink(false);
     }, [props.location.pathname]);
+
+    let disconnectWalletLink = null;
+    if(!props.showConnectWallet) {
+        disconnectWalletLink = <>
+            <li className="nav-item border-top my-3"></li> 
+            <li className="nav-item">
+                <a className="nav-link px-0 d-flex align-items-center" onClick={props.OnDisconnectWallet}>
+                    <i className="fi fi-power float-start"></i>
+                    <span>Disconnect Wallet</span>
+                </a>
+            </li>
+        </>;
+    }
 
     return <>
         <div className="col-12 col-lg-3">
@@ -47,32 +62,36 @@ export const SideNav: React.FC<SideNavProps> = (props) => {
                                     <path fillRule="evenodd" d="M9.5 1h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3zm4.354 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"></path>
                                     </svg>
                             </NavItem>
-                            
 
-                            <li className="nav-item border-top my-3"></li>
-
-                            <NavItem to='/disconnect' title="Disconnect Wallet" pathname={props.location.pathname} >
-                                <i className="fi fi-power float-start"></i>
-                                
-                            </NavItem>
-
+                            {disconnectWalletLink}
                         </ul>
-
                     </div>
                 </div>
-
             </nav>
-
         </div>
     </>;
 }
 
 interface TopNavProps {
     OnConnectWallet: () => any,
+    showConnectWallet: boolean,
+    userBalance: string
 }
 
 export const TopNav: React.FC<TopNavProps> = (props) => {
     
+    let balanceOrConnect = <a onClick={props.OnConnectWallet} aria-label="Account Options" id="dropdownAccountOptions" className="btn btn-sm btn-primary js-stoppropag" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
+        <span className="group-icon float-start">
+            <i className="fi fi-user-male"></i>
+            <i className="fi fi-close"></i>
+        </span>
+        <span>Connect Wallet</span>
+    </a>;
+
+    if(!props.showConnectWallet) {
+        balanceOrConnect = <span className="group-icon float-start">{props.userBalance} XTZ</span>;
+    }
+
     return <>
         <nav className="navbar navbar-expand-lg navbar-light justify-content-lg-between justify-content-md-inherit">
             <div className="align-items-start">
@@ -90,13 +109,7 @@ export const TopNav: React.FC<TopNavProps> = (props) => {
             <ul className="list-inline list-unstyled mb-0 d-flex align-items-end">
 
                 <li className="list-inline-item mx-1 dropdown">
-                    <a onClick={props.OnConnectWallet} aria-label="Account Options" id="dropdownAccountOptions" className="btn btn-sm btn-primary js-stoppropag" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
-                        <span className="group-icon float-start">
-                            <i className="fi fi-user-male"></i>
-                            <i className="fi fi-close"></i>
-                        </span>
-                        <span>Connect Wallet</span>
-                    </a>
+                    {balanceOrConnect}
                 </li>
             </ul>
         </nav>

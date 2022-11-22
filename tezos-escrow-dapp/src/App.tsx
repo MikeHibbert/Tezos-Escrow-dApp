@@ -8,6 +8,7 @@ import TournamentsList from './containers/tournaments/Tournaments';
 import { Contestant, Tournament } from './models/tournament';
 import TournamentDetail from './components/tournament/detail';
 import NewTournament from './components/tournament/new';
+import { NetworkType } from '@airgap/beacon-types';
 
 
 function App() {
@@ -30,20 +31,56 @@ function App() {
   ]);
   const location = useLocation(); 
 
+  const networkType = NetworkType.GHOSTNET;
+  const rpcUrl = "https://ghostnet.ecadinfra.com";
+
   const [Tezos, setTezos] = useState<TezosToolkit>(
-    new TezosToolkit("https://ghostnet.ecadinfra.com")
+    new TezosToolkit(rpcUrl)
   );
+  const [wallet, setWallet] = useState<BeaconWallet>(
+    new BeaconWallet({ name: "Beacon Wallet for TournaBond", preferredNetwork: networkType })
+  );
+
+  const [userAddress, setUserAddress] = useState<string>("");
+  const [userBalance, setUserBalance] = useState<string>("0");
+  const [showConnectWallet, setShowConnectWallet] = useState<boolean>(true);
+
+  useEffect(() => {
+    Tezos.setWalletProvider(wallet);
+  }, [wallet]);
+
+  const OnConnectWallet = async () => {
+    try {
+      await wallet.requestPermissions({
+        network: {
+          type: networkType,
+          rpcUrl: rpcUrl
+        }
+      });
+
+      const address = await wallet.getPKH();
+      const balance = await Tezos.tz.getBalance(address);
+      setUserBalance((balance.toNumber() / 1000000).toString());
+      setUserAddress(address);
+      setShowConnectWallet(false)
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const OnDisconnectWallet = async () => {
+    await wallet.clearActiveAccount();
+
+    setUserAddress("");
+    setUserBalance("");
+    setShowConnectWallet(true);
+    
+  }
 
   const OnSetCollapsedHandler = (collapsed: boolean) => {
     setCollapsed(collapsed);
   }
-
-  const OnConnectWallet = () => {
-      alert("OnConnectWallet: Not implemented!")  
-  }
-
-  const wallet = new BeaconWallet({ name: "Beacon Wallet for TournaBond" });
-  Tezos.setWalletProvider(wallet);
+  
 
   const routes =  <Routes>
     <Route path='/' element={<TournamentsList tournaments={tournaments} setPageTitle={setPageTitle} />} />
@@ -75,6 +112,10 @@ function App() {
       backLinkTitle={backLinkTitle} 
       setUseBackLink={setUseBackLink}
       setBackLinkTitle={setBackLinkTitle}
+      userAddress={userAddress}
+      userBalance={userBalance}
+      showConnectWallet={showConnectWallet}
+      OnDisconnectWallet={OnDisconnectWallet}
       >
 
         {routes}
