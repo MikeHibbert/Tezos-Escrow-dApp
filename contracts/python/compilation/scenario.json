@@ -1,0 +1,39 @@
+[
+ {
+  "shortname": "TournamentEscrowContract",
+  "longname": "TournamentEscrowContract",
+  "scenario": [
+   {
+    "action": "newContract",
+    "accept_unknown_types": false,
+    "export": "(template_id ((\"tournament_escrow.py\" 16) static_id 0) \nstorage ((\"tournament_escrow.py\" 5) record (storedValue ((\"tournament_escrow.py\" 5) literal (intOrNat 1))))\nstorage_type (())\nentry_points ((store True None None None True None (\"tournament_escrow.py\" 8) (((\"tournament_escrow.py\" 10) set ((\"tournament_escrow.py\" 10) attr ((\"tournament_escrow.py\" 16) data) \"storedValue\") ((\"tournament_escrow.py\" 8) params)))))\nflags ()\nprivates ()\nviews ()\nentry_points_layout ()\ninitial_metadata ()\nbalance ())",
+    "id": "((\"tournament_escrow.py\" 16) static_id 0)",
+    "line_no": "(\"tournament_escrow.py\" 16)",
+    "show": true
+   },
+   {
+    "action": "message",
+    "id": "((\"tournament_escrow.py\" 16) static_id 0)",
+    "line_no": "(\"tournament_escrow.py\" 17)",
+    "message": "store",
+    "params": "((\"tournament_escrow.py\" 17) literal (intOrNat 2))"
+   }
+  ],
+  "kind": "test"
+ },
+ {
+  "shortname": "my_contract_compiled",
+  "longname": "my_contract_compiled",
+  "scenario": [
+   {
+    "action": "newContract",
+    "accept_unknown_types": false,
+    "export": "(template_id ((\"\" -1) static_id 0) \nstorage ((\"tournament_escrow.py\" 5) record (storedValue ((\"tournament_escrow.py\" 5) literal (intOrNat 1))))\nstorage_type (())\nentry_points ((store True None None None True None (\"tournament_escrow.py\" 8) (((\"tournament_escrow.py\" 10) set ((\"tournament_escrow.py\" 10) attr ((\"\" -1) data) \"storedValue\") ((\"tournament_escrow.py\" 8) params)))))\nflags ()\nprivates ()\nviews ()\nentry_points_layout ()\ninitial_metadata ()\nbalance ())",
+    "id": "((\"\" -1) static_id 0)",
+    "line_no": "(\"\" -1)",
+    "show": true
+   }
+  ],
+  "kind": "compilation"
+ }
+]

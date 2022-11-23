@@ -1,0 +1,10 @@
+parameter (int %store);
+storage   int;
+code
+  {
+    CAR;        # @parameter
+    # == store ==
+    # self.data.storedValue = params # @parameter
+    NIL operation; # list operation : @parameter
+    PAIR;       # pair (list operation) @parameter
+  };
