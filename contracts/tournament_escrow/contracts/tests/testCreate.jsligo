@@ -1,0 +1,20 @@
+#include "../tournamentEscrow.jsligo"
+
+// reset state
+const _ = Test.reset_state ( 2 as nat, list([]) as list <tez> );
+const faucet = Test.nth_bootstrap_account(0);
+const owner : address = Test.nth_bootstrap_account(1);
+const contestant1 : address = Test.nth_bootstrap_account(2);
+const contestant2 : address = Test.nth_bootstrap_account(3);
+const contestant3 : address = Test.nth_bootstrap_account(4);
+const contestant4 : address = Test.nth_bootstrap_account(5);
+const _ = Test.log("Owner has balance : ");
+const _ = Test.log(Test.get_balance(owner));
+
+let _testCreate = (ownerAddress: address, tournament: Tournament) : bool => {
+    Test.set_source(ownerAddress);
+
+    
+}
+
+let test = _testCreate(owner, );
