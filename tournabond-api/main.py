@@ -2,24 +2,29 @@ import os
 import requests
 import json
 import uvicorn
+import logging
 from fastapi import FastAPI, Depends
 from sqlalchemy.orm import Session
 from schema import Contractchema
 from models import ContractModel
 from db import get_db
 
+logger = logging.getLogger()
+
 
 TEZOS_API_URL = os.getenv("TEZOS_API_URL", "https://api.ghostnet.tzkt.io")
 
 app = FastAPI()
 
-@app.post("/api/contracts/", response_model=Contractchema)
+@app.post("/api/contracts/")
 async def create_contract(contract: Contractchema, db: Session = Depends(get_db)):
     response = requests.get(f"{TEZOS_API_URL}/v1/contracts?creator={contract.contract_address}")
 
-    if response.status_code == 200:
-        print(response.json())
-        if False:
+    logger.error(response.status_code)
+
+    if response.status_code == 400:
+        logger.info(response.json())
+        if True:
             _contract = ContractModel(
                 owner_address=contract.owner_address, contract_address=contract.contract_address
             )
@@ -31,8 +36,8 @@ async def create_contract(contract: Contractchema, db: Session = Depends(get_db)
     return []
 
 
-@app.get("/api/contracts/", response_model=Contractchema)
-async def get_user(owner_address: str, db: Session = Depends(get_db)):
+@app.get("/api/contracts/")
+async def get_contracts(owner_address: str, db: Session = Depends(get_db)):
     contracts = db.query(ContractModel).filter_by(owner_address=owner_address).all()
     print(f"RESULT: {contracts}")
     return contracts

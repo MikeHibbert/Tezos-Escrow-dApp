@@ -24,3 +24,7 @@ shell:
 
 python:
 	docker-compose run web python
+
+clean:
+	./scripts/clean_docker.sh
+
