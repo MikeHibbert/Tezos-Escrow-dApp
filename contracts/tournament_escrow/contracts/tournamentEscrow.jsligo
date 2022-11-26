@@ -14,12 +14,11 @@ type Tournament = {
 };
 
 type parameter = 
-  | ["Create", Tournament]
-  | ["List"];
+  | ["Update", Tournament];
 
 type return_ = [list<operation>, storage];
 
-const create_tournament = ([s, t]: [storage, Tournament]): return_ => {
+const update_tournament = ([s, t]: [storage, Tournament]): return_ => {
   return [list([]) as list<operation>, {
     ...s, 
     organiser: Tezos.get_sender(),
@@ -34,11 +33,6 @@ const create_tournament = ([s, t]: [storage, Tournament]): return_ => {
   }];
 };
 
-const list_tournaments = (s: storage): return_ => {
-
-};
-
-
 const main = ([action, store]: [parameter, storage]): return_ => {
   if (Tezos.get_sender() != store.organiser) { 
     return match(action, {
@@ -50,4 +44,3 @@ const main = ([action, store]: [parameter, storage]): return_ => {
     Create: (tournament: Tournament) => create_tournament([store, tournament]),
   });
 };
-

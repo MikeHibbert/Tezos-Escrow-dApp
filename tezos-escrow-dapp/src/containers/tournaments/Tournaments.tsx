@@ -1,16 +1,30 @@
-import { PropsWithChildren, useEffect } from 'react';
+import { PropsWithChildren, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import TournamentListItem from '../../components/tournament/tournament';
+import { getTournamentContracts } from '../../helpers/contracts';
 import {Tournament} from '../../models/tournament';
 
 interface TournamentsProps {
     tournaments: Tournament[],
     setPageTitle: (title:string) => void,
+    userAddress: string,
+    isLoggedIn: boolean
 }
 
 const TournamentsList: React.FC<PropsWithChildren<TournamentsProps>> = (props) => {
-    useEffect(() => {
+    const [contracts, setContracts] = useState<any>();
+
+    useEffect( () => {
         props.setPageTitle('My Tournaments');
+
+        if(!props.isLoggedIn) return;
+
+        const getContracts = async () => {
+            const contracts = await getTournamentContracts("tz1aJ24777Zg3dkB1VCuGudL9XS8zB1NvTGr");
+            setContracts(contracts);
+        }
+
+        getContracts();
     }, []);
     
     

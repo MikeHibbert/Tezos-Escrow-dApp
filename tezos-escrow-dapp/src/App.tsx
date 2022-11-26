@@ -85,7 +85,12 @@ function App() {
   
   if(!showConnectWallet) {
   routes =  <Routes>
-      <Route path='/' element={<TournamentsList tournaments={tournaments} setPageTitle={setPageTitle} />} />
+      <Route path='/' element={<TournamentsList 
+                                  tournaments={tournaments} 
+                                  userAddress={userAddress} 
+                                  setPageTitle={setPageTitle} 
+                                  isLoggedIn={!showConnectWallet}
+                                />} />
       <Route path='/tournament' element={<TournamentDetail 
                                             tournaments={tournaments} 
                                             setPageTitle={setPageTitle} 
