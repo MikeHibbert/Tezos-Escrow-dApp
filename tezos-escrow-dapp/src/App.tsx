@@ -81,10 +81,11 @@ function App() {
     setCollapsed(collapsed);
   }
   
-  let routes =  <Routes></Routes>
+  let routes =  <Routes></Routes>;
   
-  if(!showConnectWallet) {
-  routes =  <Routes>
+  if(showConnectWallet) {
+
+    routes =  <Routes>
       <Route path='/' element={<TournamentsList 
                                   tournaments={tournaments} 
                                   userAddress={userAddress} 

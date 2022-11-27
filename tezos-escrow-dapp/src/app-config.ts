@@ -1,2 +1,4 @@
-export const TEZOS_API_URL = process.env.TEZOS_API_URL;
-export const TOURNABOND_URL = process.env.TOURNABOND_URL;
+import env from "react-dotenv";
+
+export const TEZOS_API_URL = env.TEZOS_API_URL;
+export const TOURNABOND_URL = env.TOURNABOND_URL;

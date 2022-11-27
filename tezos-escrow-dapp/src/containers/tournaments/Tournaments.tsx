@@ -14,20 +14,20 @@ interface TournamentsProps {
 const TournamentsList: React.FC<PropsWithChildren<TournamentsProps>> = (props) => {
     const [contracts, setContracts] = useState<any>();
 
-    useEffect( () => {
+    useEffect(() => {
         props.setPageTitle('My Tournaments');
 
-        if(!props.isLoggedIn) return;
+        // if(!props.isLoggedIn) return;
 
         const getContracts = async () => {
-            const contracts = await getTournamentContracts("tz1aJ24777Zg3dkB1VCuGudL9XS8zB1NvTGr");
+            const contracts = await getTournamentContracts("dsadsaasd"); // ("tz1aJ24777Zg3dkB1VCuGudL9XS8zB1NvTGr");
+            debugger;
             setContracts(contracts);
         }
-
+        
         getContracts();
     }, []);
-    
-    
+        
     return <>
             <div className="card mb-3">
                 <div className="card-body">
